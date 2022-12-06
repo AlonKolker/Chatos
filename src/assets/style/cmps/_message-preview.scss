@@ -1,0 +1,50 @@
+.message-preview-container {
+  // background-color: #ddddf7;
+  padding: 10px;
+  margin: 10px;
+  display: flex;
+  &.owner{
+    flex-direction: row-reverse;
+    .msg-content{
+align-items: flex-end;
+      .msg-tex{
+        color: white;
+        background-color: #2d6a4f;
+        
+      }
+    }
+  }
+  .msg-info {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-inline-end: 12px;
+    .user-img {
+      height: 40px;
+      width: 40px;
+      object-fit: cover;
+
+      border-radius: 50%;
+    }
+    .msg-time {
+      // color: lightgray;
+      font-size: 12px;
+    }
+  }
+  .msg-content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 80%;
+    .msg-text{
+      background-color: white;
+      padding: 10px 20px;
+      border-radius: 0 10px 10px 10px ;
+      max-width: max-content;
+   
+    }
+    .sended-img{
+      width: 100px;
+    }
+  }
+}

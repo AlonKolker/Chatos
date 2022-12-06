@@ -1,0 +1,34 @@
+.send-msg-container {
+  display: flex;
+  align-items: center;
+  // justify-content: center;
+  background-color: white;
+  padding: 16px;
+  
+  .send-msg-input {
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 18px;
+    &::placeholder {
+      color: lightgray;
+    }
+  }
+  .send-features {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    color: rgb(160, 159, 159);
+    gap: 10px;
+    .icon {
+      cursor: pointer;
+    }
+    .send-btn{
+      border: none;
+      padding: 10px 15px ;
+      color: #fff;
+      background-color:#95d5b2 ;
+      cursor: pointer;
+    }
+  }
+}

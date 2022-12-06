@@ -1,0 +1,20 @@
+.chat-container{
+  // width:100%;
+  display: flex;
+  flex-direction: column;
+  .chat-info{
+  display: flex;
+  justify-content: space-between;
+  height: 60px;
+  align-items: center;
+  padding: 10px 15px 10px 10px;
+  background-color: #2d6a4f;
+  .chat-icons{
+    display: flex;
+    font-size: 14px;
+    gap: 12px;
+    color: #fff;
+  }
+}
+
+}

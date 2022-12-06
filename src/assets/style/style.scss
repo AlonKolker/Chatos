@@ -1,0 +1,43 @@
+
+// BASE
+@import "base/setup.scss";
+
+
+// PAGES
+@import "pages/register_login";
+@import "pages/home";
+@import "pages/chat";
+
+// CMPS
+@import "cmps/sideBar";
+@import "cmps/navBar";
+@import "cmps/search";
+@import "cmps/chats";
+@import "cmps/message-list";
+@import "cmps/message-preview";
+@import "cmps/sendMsg";
+
+
+@mixin mobile {
+  @media screen and (max-width: 480px){
+   @content 
+  }
+}
+// inside the rellevant class
+// @inculde tablet{
+
+// }
+@mixin tablet {
+  @media screen and (max-width: 768){
+   @content 
+  }
+}
+
+@mixin laptop {
+  @media screen and (max-width: 1200px){
+   @content 
+  }
+}
+
+
+

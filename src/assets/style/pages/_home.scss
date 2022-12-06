@@ -1,0 +1,16 @@
+.home{
+  background-color: #b7e4c7;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .container{
+    border: 1px solid wheat;
+    border-radius: 10px;
+    overflow: hidden;
+    width: 85%;
+    height: 90%;
+    display: grid;
+    grid-template-columns: 0.35fr 0.65fr;
+  }
+}
