@@ -15,5 +15,37 @@
     }
 
   }
+  .user-chat {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50px;
+      object-fit: cover;
+    }
+    .user-name {
+      color: #fff;
+    }
 
+    &:hover {
+      background-color: #081c15;
+    }
+    .user-chat-info {
+      font-weight: 500;
+      color: #fff;
+      .user-name{
+        font-size: 18px;
+      }
+      .last-msg {
+        font-size: 12px;
+        color: lightgray;
+
+      }
+    }
+  }
 }
+

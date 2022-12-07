@@ -1,51 +1,50 @@
-import React from "react"
+import { doc, onSnapshot } from "firebase/firestore";
+import React, { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../context/authContext";
+import { ChatContext } from "../context/chatContext";
+import { db } from "../firebase-server/firebase";
 
 export const Chats = () => {
+  const [chats, setChats] = useState([]);
+
+  const { currentUser } = useContext(AuthContext);
+  const { dispatch } = useContext(ChatContext);
+
+  useEffect(() => {
+    const getChats = () => {
+      const unsub = onSnapshot(doc(db, "userChats", currentUser.uid), (doc) => {
+        setChats(doc.data());
+      });
+
+      return () => {
+        unsub();
+      };
+    };
+
+    currentUser.uid && getChats();
+  }, [currentUser.uid]);
+
+  const handleSelect = (u) => {
+    dispatch({ type: "CHANGE_USER", payload: u });
+  };
+
   return (
-    <div className='chats-container'>
-      <div className='user-chat'>
-        <img
-          src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjv1AqL5CzC2jR5v7_usLpsWEgmdVWDc38XP79KiXQy0tYFqkixgrpoC6miXMJJzghopk&usqp=CAU'
-          alt=''
-        />
-        <div className='user-chat-info'>
-          <span className='user-name'>Jane</span>
-          <p className='last-msg'>Hello</p>
+    <div className="chats-container">
+      {Object.entries(chats)?.sort((a,b)=>b[1].date - a[1].date).map((chat) => (
+        <div
+          className="user-chat"
+          key={chat[0]}
+          onClick={() => handleSelect(chat[1].userInfo)}
+        >
+          <img src={chat[1].userInfo.photoURL} alt="" />
+          <div className="user-chat-info ">
+            <span className="user-name">{chat[1].userInfo.displayName}</span>
+            <p className="last-msg">{chat[1].lastMessage?.text}</p>
+          </div>
         </div>
-      </div>
-      {/*  */}
-      <div className='user-chat'>
-        <img
-          src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjv1AqL5CzC2jR5v7_usLpsWEgmdVWDc38XP79KiXQy0tYFqkixgrpoC6miXMJJzghopk&usqp=CAU'
-          alt=''
-        />
-        <div className='user-chat-info'>
-          <span className='user-name'>Jane</span>
-          <p className='last-msg'>Hello</p>
-        </div>
-      </div>
-      {/*  */}
-      <div className='user-chat'>
-        <img
-          src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjv1AqL5CzC2jR5v7_usLpsWEgmdVWDc38XP79KiXQy0tYFqkixgrpoC6miXMJJzghopk&usqp=CAU'
-          alt=''
-        />
-        <div className='user-chat-info'>
-          <span className='user-name'>Jane</span>
-          <p className='last-msg'>Hello</p>
-        </div>
-      </div>
-      {/*  */}
-      <div className='user-chat'>
-        <img
-          src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjv1AqL5CzC2jR5v7_usLpsWEgmdVWDc38XP79KiXQy0tYFqkixgrpoC6miXMJJzghopk&usqp=CAU'
-          alt=''
-        />
-        <div className='user-chat-info'>
-          <span className='user-name'>Jane</span>
-          <p className='last-msg'>Hello</p>
-        </div>
-      </div>
+      ))}
     </div>
-  )
-}
+  );
+};
+
+export default Chats;

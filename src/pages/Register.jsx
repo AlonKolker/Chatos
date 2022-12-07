@@ -1,17 +1,21 @@
 import React from "react"
 import Add from "../assets/imgs/addAvatar.png"
+
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth"
 import { auth, storage, db } from "../firebase-server/firebase"
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage"
 import { doc, setDoc } from "firebase/firestore"
+import { useNavigate, Link } from "react-router-dom"
 
 export const Register = () => {
+const navigate = useNavigate() 
+const avatear = 'https://firebasestorage.googleapis.com/v0/b/chatos-app.appspot.com/o/alon?alt=media&token=917a896a-42ea-47f2-9d16-5220c93d938c'
   const handleSubmit = async (e) => {
     e.preventDefault()
     const displayName = e.target[0].value
     const email = e.target[1].value
     const password = e.target[2].value
-    const file = e.target[3].files[0]
+    const file = e.target[3].files[0] 
 
     try {
       const res = await createUserWithEmailAndPassword(auth, email, password)
@@ -35,7 +39,7 @@ export const Register = () => {
             })
 
           const chatCollection =   await setDoc(doc(db,'userChats', res.user.uid),{})
-          
+          navigate("/")
           } catch (err) {
             const errorMessage = err.message
             console.log(errorMessage)
@@ -66,10 +70,10 @@ export const Register = () => {
             <img className='add-avatar-label-img' src={Add} alt='' />
             <span>add An avatar</span>
           </label>
-          <input style={{ display: "none" }} type='file' id='add-avatar' />
+          <input style={{ display: "none" }} type='file' id='add-avatar' required />
           <button className='sign-up-btn'>Sign Up</button>
         </form>
-        <p className='form-finish-text'>Have an account? Login </p>
+        <p className='form-finish-text'>Have an account? <Link to={"/login"}>Login</Link>  </p>
       </div>
     </div>
   )
