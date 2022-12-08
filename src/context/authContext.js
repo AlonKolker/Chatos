@@ -13,6 +13,7 @@ export const AuthContextProvider = ({ children }) => {
       console.log(user);
     });
 
+    // For memorry leaking
     return () => {
       unsub();
     };

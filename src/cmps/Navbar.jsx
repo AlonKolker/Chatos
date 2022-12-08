@@ -9,7 +9,7 @@ export const Navbar = () => {
   const avatar = currentUser.photoURL || Img
   return (
     <div className='nav-bar'>
-      <span className='logo'>WrightItDown</span>
+      <span className='logo'>Chatos</span>
       <div className='user'>
         <img
           className='user-img'

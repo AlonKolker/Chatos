@@ -26,7 +26,7 @@ export const Login = () => {
   return (
     <div className='form-container'>
       <div className='form-wrapper'>
-        <span className='logo'>WrightItDown</span>
+        <span className='logo'>Chatos</span>
         <span className='title'>Register</span>
         <form className='register-form' onSubmit={handleSubmit}>
           <input type='email' placeholder='email' />

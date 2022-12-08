@@ -60,7 +60,7 @@ const avatear = 'https://firebasestorage.googleapis.com/v0/b/chatos-app.appspot.
   return (
     <div className='form-container'>
       <div className='form-wrapper'>
-        <span className='logo'>WrightItDown</span>
+        <span className='logo'>Chatos</span>
         <span className='title'>Register</span>
         <form className='register-form' onSubmit={handleSubmit}>
           <input type='text' placeholder='display name' />

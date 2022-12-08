@@ -78,35 +78,21 @@ export default function SendMsg() {
   return (
     <div className='send-msg-container'>
       <input
-        type="text"
+        type='text'
         className='send-msg-input'
-        placeholder="Type something..."
+        placeholder='Type something...'
         onChange={(e) => setText(e.target.value)}
         value={text}
       />
       <div className='send-features'>
-        {/* <input
-          className='img'
-          type='file'
-          style={{ display: "none" }}
-          id='img'
-          onChange={(e) => setText(e.target.value)}
-        />
+        <input type='file' style={{ display: "none" }} id='file' onChange={(e) => setImg(e.target.files[0])} />
         <label htmlFor='file'>
-          <FontAwesomeIcon className='icon' icon={faPaperclip} />
-        </label> */}
-      <input
-          type="file"
-          style={{ display: "none" }}
-          id="file"
-          onChange={(e) => setImg(e.target.files[0])}
-        />
-        <label htmlFor="file">
-        <FontAwesomeIcon className='icon' icon={faUpload} />
+          <FontAwesomeIcon className='icon' icon={faUpload} />
         </label>
-   
-        <button className="send-btn" onClick={handleSend}>Send</button>
 
+        <button className='send-btn' onClick={handleSend}>
+          Send
+        </button>
       </div>
     </div>
   )
